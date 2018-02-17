@@ -5,7 +5,8 @@ const SecondPage = () => (
   <div>
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
-    <form data-netlify netlify="true" name="contact">
+    <form data-netlify name="contact" action="/contact-success/">
+      <input type="hidden" name="form-name" value="contact" />
       <label htmlFor="email">
         Your Email: <input type="email" id="email" name="email" />
       </label>
