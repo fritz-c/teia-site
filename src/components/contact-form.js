@@ -52,17 +52,6 @@ export default class ContactForm extends Component {
           </label>
         </p>
         <p>
-          <label htmlFor="name">
-            Your name:<br />
-            <input
-              type="text"
-              id="name"
-              name="name"
-              onChange={this.handleChange}
-            />
-          </label>
-        </p>
-        <p>
           <label htmlFor="email">
             Your email:<br />
             <input
