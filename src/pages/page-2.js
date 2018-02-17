@@ -5,13 +5,13 @@ const SecondPage = () => (
   <div>
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
-    <form netlify="true" name="contact" action="/contact-success/">
+    <form data-netlify name="contact" action="/contact-success">
       <label htmlFor="email">
-        Your Email: <input type="email" name="email" />
+        Your Email: <input type="email" id="email" name="email" />
       </label>
       <br />
       <label htmlFor="message">
-        Message: <input type="text" name="message" />
+        Message: <input type="text" id="message" name="message" />
       </label>
       <br />
       <button type="submit">Send!</button>
