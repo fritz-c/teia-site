@@ -1,22 +1,12 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import ContactForm from '../components/contact-form';
 
 const SecondPage = () => (
   <div>
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
-    <form data-netlify name="contact" action="/contact-success/">
-      <input type="hidden" name="form-name" value="contact" />
-      <label htmlFor="email">
-        Your Email: <input type="email" id="email" name="email" />
-      </label>
-      <br />
-      <label htmlFor="message">
-        Message: <input type="text" id="message" name="message" />
-      </label>
-      <br />
-      <button type="submit">Send!</button>
-    </form>
+    <ContactForm />
     <Link to="/">Go back to the homepage</Link>
   </div>
 );
