@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { navigateTo } from 'gatsby-link';
 import axios from 'axios';
 
 function encode(data) {
@@ -23,6 +24,7 @@ export default class ContactForm extends Component {
   handleSubmit(event) {
     axios
       .post('/', encode({ 'form-name': 'contact', ...this.state }))
+      .then(() => navigateTo('/thanks/'))
       .catch(err => global.console.error(err));
 
     event.preventDefault();
@@ -40,7 +42,13 @@ export default class ContactForm extends Component {
       >
         <p hidden>
           <label htmlFor="bot-field">
-            Don’t fill this out: <input id="bot-field" name="bot-field" />
+            Don’t fill this out:{' '}
+            <input
+              type="text"
+              id="bot-field"
+              name="bot-field"
+              onChange={this.handleChange}
+            />
           </label>
         </p>
         <p>
