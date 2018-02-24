@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
+import logo from '../images/logo.png';
 
 const HeaderEl = styled.header`
   background: rebeccapurple;
@@ -26,7 +27,7 @@ const Header = () => (
           }}
         >
           <FormattedMessage id="teia">
-            {teiaName => <img alt={teiaName} src="/static/images/logo.png" />}
+            {teiaName => <img alt={teiaName} src={logo} />}
           </FormattedMessage>
         </Link>
       </h1>
