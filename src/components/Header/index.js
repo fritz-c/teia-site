@@ -1,13 +1,15 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
+
+const HeaderEl = styled.header`
+  background: rebeccapurple;
+  margin-bottom: 1.45rem;
+`;
 
 const Header = () => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
+  <HeaderEl>
     <div
       style={{
         margin: '0 auto',
@@ -23,11 +25,13 @@ const Header = () => (
             textDecoration: 'none',
           }}
         >
-          Teia
+          <FormattedMessage id="teia">
+            {teiaName => <img alt={teiaName} src="/static/images/logo.png" />}
+          </FormattedMessage>
         </Link>
       </h1>
     </div>
-  </div>
+  </HeaderEl>
 );
 
 export default Header;

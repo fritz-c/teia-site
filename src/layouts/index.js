@@ -1,32 +1,52 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { IntlProvider, addLocaleData } from 'react-intl';
+import ja from 'react-intl/locale-data/ja';
+import { localeData } from '../i18n';
 
 import Header from '../components/Header';
 import './index.css';
 
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Helmet
-      title="Gatsby Default Starter"
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
-    <Header />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
+addLocaleData([...ja]);
+
+const TemplateWrapper = ({ children }) => {
+  const displayedLocale = 'ja';
+  return (
+    <IntlProvider
+      locale={displayedLocale}
+      messages={localeData[displayedLocale]}
+      defaultLocale="ja"
     >
-      {children()}
-    </div>
-  </div>
-);
+      <Fragment>
+        <Helmet
+          title="Teia"
+          meta={
+            [
+              // { name: 'description', content: 'Sample' },
+              // { name: 'keywords', content: 'sample, something' },
+            ]
+          }
+        />
+        <Header />
+        <div
+          style={{
+            margin: '0 auto',
+            maxWidth: 960,
+            padding: '0px 1.0875rem 1.45rem',
+            paddingTop: 0,
+          }}
+        >
+          {children()}
+        </div>
+      </Fragment>
+    </IntlProvider>
+  );
+};
+
+TemplateWrapper.defaultProps = {
+  children: () => null,
+};
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,

@@ -2,5 +2,5 @@ module.exports = {
   siteMetadata: {
     title: 'Teia',
   },
-  plugins: ['gatsby-plugin-react-helmet'],
+  plugins: ['gatsby-plugin-styled-components', 'gatsby-plugin-react-helmet'],
 };
