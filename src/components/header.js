@@ -5,33 +5,61 @@ import { FormattedMessage } from 'react-intl';
 import logo from '../images/logo.png';
 
 const HeaderEl = styled.header`
-  background: rebeccapurple;
-  margin-bottom: 1.45rem;
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0.5rem 1.0875rem;
+  display: flex;
+  justify-content: space-between;
+`;
+const Logo = styled.img`
+  margin: 0 0 0 2rem;
+`;
+const LinkList = styled.ul`
+  list-style: none;
+  margin: 0;
+`;
+const LinkListItem = styled.li`
+  display: inline-block;
+  margin: 0;
+`;
+const Nav = styled.nav``;
+const NavLink = styled(Link).attrs({
+  activeClassName: 'selected',
+})`
+  text-decoration: none;
+  padding: 0.3rem 0.8rem;
+  color: #666;
+  display: inline-block;
+
+  &.selected {
+    color: ${props => props.theme.main};
+    box-shadow: 0 3px 0 0 ${props => props.theme.main};
+  }
 `;
 
 const Header = () => (
   <HeaderEl>
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          <FormattedMessage id="teia">
-            {teiaName => <img alt={teiaName} src={logo} />}
-          </FormattedMessage>
-        </Link>
-      </h1>
-    </div>
+    <h1 style={{ margin: 0 }}>
+      <Link to="/">
+        <FormattedMessage id="teia">
+          {teiaName => <Logo alt={teiaName} src={logo} />}
+        </FormattedMessage>
+      </Link>
+    </h1>
+    <Nav>
+      <LinkList>
+        <LinkListItem>
+          <NavLink to="/" exact>
+            <FormattedMessage id="home" />
+          </NavLink>
+        </LinkListItem>
+        <LinkListItem>
+          <NavLink to="/contact">
+            <FormattedMessage id="contact" />
+          </NavLink>
+        </LinkListItem>
+      </LinkList>
+    </Nav>
   </HeaderEl>
 );
 
