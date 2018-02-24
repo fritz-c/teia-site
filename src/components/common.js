@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 export const theme = {
   main: '#dd6623',
+  pageMaxWidth: '1280px',
+  pageHorizontalPadding: '2rem',
+  pageHorizontalPaddingMobile: '0',
 };
 
 export const Button = styled.button`

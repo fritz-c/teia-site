@@ -2,13 +2,22 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { IntlProvider, addLocaleData } from 'react-intl';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import ja from 'react-intl/locale-data/ja';
 import { localeData } from '../i18n';
 import { theme } from '../components/common';
 
 import Header from '../components/header';
 import './index.css';
+
+const Page = styled.div`
+  max-width: ${props => props.theme.pageMaxWidth};
+  padding: 0 ${props => props.theme.pageHorizontalPadding};
+
+  @media screen and (max-width: 768px) {
+    padding: 0 ${props => props.theme.pageHorizontalPaddingMobile};
+  }
+`;
 
 addLocaleData([...ja]);
 
@@ -32,16 +41,7 @@ const TemplateWrapper = ({ children }) => {
             }
           />
           <Header />
-          <div
-            style={{
-              margin: '0 auto',
-              maxWidth: 960,
-              padding: '0px 1.0875rem 1.45rem',
-              paddingTop: 0,
-            }}
-          >
-            {children()}
-          </div>
+          <Page>{children()}</Page>
         </Fragment>
       </ThemeProvider>
     </IntlProvider>

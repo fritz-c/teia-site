@@ -1,14 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
-import heroImage from '../images/hero.jpg';
 import { ButtonLink } from '../components/common';
+import AbilityCell from '../components/ability-cell';
+import heroImage from '../images/hero.jpg';
+import teiaBadge from '../images/teia-badge.png';
+import airplaneIcon from '../images/circle-airplane.png';
+import contractIcon from '../images/circle-contract.png';
+import handshakeIcon from '../images/circle-handshake.png';
+import packagesIcon from '../images/circle-packages.png';
+import shipIcon from '../images/circle-ship.png';
 
 const HeroContainer = styled.div`
-  background: url(${heroImage});
+  background: url(${heroImage}) 70% 10%;
   background-size: cover;
   color: white;
-  padding: 120px 65px;
+  padding: 120px 65px 100px 65px;
+
+  @media screen and (max-width: 768px) {
+    padding: 40px 25px;
+    background-position: 65% 50%;
+  }
 `;
 
 const HeroTitle = styled.h2`
@@ -25,8 +37,13 @@ const HeroDescription = styled.h3`
 
 const ShadowContainer = styled.div`
   background: rgba(0, 0, 0, 0.4);
-  padding: 40px;
-  margin: 40px;
+  padding: 40px 40px 0 40px;
+  margin: 40px 40px 0 40px;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+    margin: 40px 0 0 0;
+  }
 `;
 
 const ValueTitle = styled.h3`
@@ -47,6 +64,37 @@ const HrStub = styled.hr`
   border-bottom: solid white 7px;
 `;
 
+const TeiaBadge = styled.img.attrs({
+  alt: '',
+  src: teiaBadge,
+})`
+  width: 210px;
+  max-width: none;
+  margin: 0;
+`;
+
+const AbilitiesContainer = styled.div`
+  display: flex;
+  margin-top: -100px;
+  padding: 0 40px;
+
+  @media screen and (max-width: 768px) {
+    margin: 0;
+    flex-direction: column;
+  }
+`;
+
+const Row = styled.div`
+  display: flex;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+const Column = styled.div`
+  flex: 1 1 auto;
+`;
+
 const IndexPage = () => (
   <div>
     <HeroContainer>
@@ -56,21 +104,35 @@ const IndexPage = () => (
       <HeroDescription>
         <FormattedMessage id="top.heroDescription" />
       </HeroDescription>
-      <div>
-        <ButtonLink to="/contact">
-          <FormattedMessage id="contact" />
-        </ButtonLink>
-      </div>
+      <ButtonLink to="/contact">
+        <FormattedMessage id="contact" />
+      </ButtonLink>
       <ShadowContainer>
-        <HrStub />
-        <ValueTitle>
-          <FormattedMessage id="top.valueTitle" />
-        </ValueTitle>
-        <ValueDescription>
-          <FormattedMessage id="top.valueDescription" />
-        </ValueDescription>
+        <Row style={{ alignItems: 'center' }}>
+          <Column>
+            <HrStub />
+            <ValueTitle>
+              <FormattedMessage id="top.valueTitle" />
+            </ValueTitle>
+            <ValueDescription>
+              <FormattedMessage id="top.valueDescription" />
+            </ValueDescription>
+          </Column>
+          <Column>
+            <TeiaBadge />
+          </Column>
+        </Row>
       </ShadowContainer>
     </HeroContainer>
+    <AbilitiesContainer>
+      {[
+        { type: 'Confer', src: handshakeIcon },
+        { type: 'Packing', src: packagesIcon },
+        { type: 'Clearance', src: contractIcon },
+        { type: 'AirFreight', src: airplaneIcon },
+        { type: 'SeaFreight', src: shipIcon },
+      ].map(props => <AbilityCell {...props} />)}
+    </AbilitiesContainer>
   </div>
 );
 

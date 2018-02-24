@@ -6,10 +6,14 @@ import logo from '../images/logo.png';
 
 const HeaderEl = styled.header`
   margin: 0 auto;
-  max-width: 960px;
-  padding: 0.5rem 1.0875rem;
+  max-width: ${props => props.theme.pageMaxWidth};
+  padding: 0.5rem ${props => props.theme.pageHorizontalPadding};
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    padding: 0.5rem ${props => props.theme.pageHorizontalPaddingMobile};
+  }
 `;
 const Logo = styled.img`
   margin: 0 0 0 2rem;
@@ -22,7 +26,11 @@ const LinkListItem = styled.li`
   display: inline-block;
   margin: 0;
 `;
-const Nav = styled.nav``;
+const Nav = styled.nav`
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
 const NavLink = styled(Link).attrs({
   activeClassName: 'selected',
 })`
