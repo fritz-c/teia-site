@@ -5,7 +5,7 @@ import { IntlProvider, addLocaleData } from 'react-intl';
 import ja from 'react-intl/locale-data/ja';
 import { localeData } from '../i18n';
 
-import Header from '../components/Header';
+import Header from '../components/header';
 import './index.css';
 
 addLocaleData([...ja]);
