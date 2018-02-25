@@ -8,11 +8,13 @@ import { localeData } from '../i18n';
 import { theme } from '../components/common';
 
 import Header from '../components/header';
+import Footer from '../components/footer';
 import './index.css';
 
 const Page = styled.div`
   max-width: ${props => props.theme.pageMaxWidth};
   padding: 0 ${props => props.theme.pageHorizontalPadding};
+  margin: auto;
 
   @media screen and (max-width: 768px) {
     padding: 0 ${props => props.theme.pageHorizontalPaddingMobile};
@@ -42,6 +44,7 @@ const TemplateWrapper = ({ children }) => {
           />
           <Header />
           <Page>{children()}</Page>
+          <Footer />
         </Fragment>
       </ThemeProvider>
     </IntlProvider>

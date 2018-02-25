@@ -28,3 +28,20 @@ export const ButtonLink = Button.withComponent(Link).extend`
   text-decoration: none;
   display: inline-block;
 `;
+
+export const Row = styled.div`
+  display: flex;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+export const Column = styled.div`
+  flex: 1 1 auto;
+`;
+
+export const Description = styled.p`
+  font-size: 0.9rem;
+  font-weight: 200;
+  white-space: pre-wrap;
+`;
