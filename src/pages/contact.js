@@ -18,6 +18,10 @@ const Container = Row.extend`
     #fef9f6 20.00001%,
     #fef9f6 100%
   );
+
+  @media screen and (max-width: 768px) {
+    background: #fef9f6;
+  }
 `;
 
 const TeiaBadge = styled.img.attrs({
@@ -35,7 +39,7 @@ const TeiaBadge = styled.img.attrs({
 
 const SecondPage = () => (
   <Container>
-    <Column>
+    <Column style={{ width: '100%' }}>
       <SectionTitle>
         <FormattedMessage id="contact" />
       </SectionTitle>

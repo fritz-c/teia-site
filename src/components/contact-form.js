@@ -96,13 +96,13 @@ export default class ContactForm extends Component {
           </label>
         </p>
         <p>
-          <label htmlFor="personName">
+          <label htmlFor="person-name">
             <FormattedMessage id="contact.name" />
             <RequiredText />
             <br />
             <FullWidthInput
               type="text"
-              id="personName"
+              id="person-name"
               name="person-name"
               required
               onChange={this.handleChange}
