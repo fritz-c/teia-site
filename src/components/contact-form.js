@@ -81,7 +81,7 @@ export default class ContactForm extends Component {
   render() {
     return (
       <form
-        name="contact"
+        name="contact-form"
         method="post"
         action="/thanks/"
         data-netlify="true"
