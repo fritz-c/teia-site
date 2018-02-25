@@ -6,9 +6,9 @@ import styled, { ThemeProvider } from 'styled-components';
 import ja from 'react-intl/locale-data/ja';
 import { localeData } from '../i18n';
 import { theme } from '../components/common';
-
 import Header from '../components/header';
 import Footer from '../components/footer';
+import teiaBadge from '../images/teia-badge.png';
 import './index.css';
 
 const Page = styled.div`
@@ -34,13 +34,21 @@ const TemplateWrapper = ({ children }) => {
       <ThemeProvider theme={theme}>
         <Fragment>
           <Helmet
-            title="Teia"
-            meta={
-              [
-                // { name: 'description', content: 'Sample' },
-                // { name: 'keywords', content: 'sample, something' },
-              ]
-            }
+            title="鼎亜国際貿易"
+            meta={[
+              {
+                name: 'description',
+                content:
+                  '鼎亜国際貿易は国際物流のプロ集団。国際物流の事なら弊社にご相談ください。',
+              },
+              { name: 'og:image', content: teiaBadge },
+              { name: 'og:site_name', content: '鼎亜国際貿易' },
+              {
+                name: 'og:description',
+                content:
+                  '鼎亜国際貿易は国際物流のプロ集団。国際物流の事なら弊社にご相談ください。',
+              },
+            ]}
           />
           <Header />
           <Page>{children()}</Page>
