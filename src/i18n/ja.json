@@ -46,7 +46,7 @@
   "contact.doNotFill": "こちらの項目に記入しないでください",
   "contact.name": "お名前",
   "contact.pronunciation": "フリガナ",
-  "contact.contactMethod": "連絡方法",
+  "contact.contactMethod": "連絡先(メールアドレス、電話番号、SNS等)",
   "contact.inquiry": "内容",
   "contact.send": "送信",
   "contact.required": "（必須）",
