@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
-import { ButtonLink, Row, Column, Description } from '../components/common';
+import {
+  ButtonLink,
+  Row,
+  Column,
+  Description,
+  SectionTitle,
+} from '../components/common';
 import AbilityCell from '../components/ability-cell';
 import ServiceCell from '../components/service-cell';
 import heroImage from '../images/hero.jpg';
@@ -52,10 +58,6 @@ const ShadowContainer = styled.div`
     padding: 20px;
     margin: 110px 0 0 0;
   }
-`;
-
-const SectionTitle = styled.h2`
-  font-weight: 400;
 `;
 
 const ValueTitle = SectionTitle.extend``;

@@ -5,6 +5,7 @@
   "businessLink": "業務内容",
   "aboutLink": "会社情報",
   "contact": "問い合わせ",
+  "goToHome": "トップページに戻る",
   "top.heroTitle": "世界とつなぐ未来をひらく。",
   "top.heroDescription": "Connect to the world and the future.",
   "top.valueTitle": "鼎亜国際貿易が誇るプ口品質",
@@ -41,5 +42,14 @@
   "company.basicInfo": "株式会社鼎亜国際貿易\n代表者: 代表取締役 永松 川昌\n資本金: 500万円\n設　立: 平成23年5月9日",
   "company.japanBranch": "本 社\n〒340-0822 埼玉県八潮市大瀬407-1\n電　話: 048-916-3905\nＦＡＸ: 048-916-3905",
   "company.chinaBranch": "中国支社\n重慶市渝北区新牌坊中渝国賓城11棟 12-14\n電話: +(86)023-8850-3328",
-  "consultWithUs": "国際物流の事なら当社にご相談ください"
+  "consultWithUs": "国際物流の事なら当社にご相談ください",
+  "contact.doNotFill": "こちらの項目に記入しないでください",
+  "contact.name": "お名前",
+  "contact.pronunciation": "フリガナ",
+  "contact.contactMethod": "連絡方法",
+  "contact.inquiry": "内容",
+  "contact.send": "送信",
+  "contact.required": "（必須）",
+  "contact.thankYouTitle": "お問い合わせをいただき誠にありがとうございます。",
+  "contact.thankYou": "ご返信いたしますので少々お待ちください。"
 }

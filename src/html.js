@@ -36,9 +36,6 @@ class HTML extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          {this.props.headComponents}
-          {css}
-          <script />
           <script src="https://use.typekit.net/fni8ang.js" />
           <script
             // eslint-disable-next-line react/no-danger
@@ -46,6 +43,9 @@ class HTML extends Component {
               __html: 'try{Typekit.load({ async: true });}catch(e){}',
             }}
           />
+          {this.props.headComponents}
+          {css}
+          <script />
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}

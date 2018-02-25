@@ -37,10 +37,19 @@ const NavLink = styled(Link)`
   padding: 0.3rem 0.8rem;
   color: #666;
   display: inline-block;
+  transition: color 100ms, text-shadow 300ms;
 
   &.selected {
     color: ${props => props.theme.main};
     box-shadow: 0 3px 0 0 ${props => props.theme.main};
+  }
+
+  &:hover {
+    color: ${props => props.theme.main};
+  }
+
+  &:active {
+    text-shadow: 0 0 1px ${props => props.theme.main};
   }
 `;
 

@@ -15,6 +15,7 @@ const Page = styled.div`
   max-width: ${props => props.theme.pageMaxWidth};
   padding: 0 ${props => props.theme.pageHorizontalPadding};
   margin: auto;
+  min-height: calc(100vh - 20.5rem);
 
   @media screen and (max-width: 768px) {
     padding: 0 ${props => props.theme.pageHorizontalPaddingMobile};
@@ -49,7 +50,9 @@ const TemplateWrapper = ({ children }) => {
                   '鼎亜国際貿易は国際物流のプロ集団。国際物流の事なら弊社にご相談ください。',
               },
             ]}
-          />
+          >
+            <html lang={displayedLocale} />
+          </Helmet>
           <Header />
           <Page>{children()}</Page>
           <Footer />

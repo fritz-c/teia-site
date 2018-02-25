@@ -14,9 +14,12 @@ export const Button = styled.button`
   border: solid gray 1px;
   color: ${props => props.theme.main};
   padding: 0.3rem 2rem;
+  cursor: pointer;
+  transition: transform 300ms, background 300ms;
 
   &:hover {
-    background: #f7f7f7;
+    background: #f0f0f0;
+    transform: translate(0.25px, 0.5px);
   }
 
   &:active {
@@ -44,4 +47,8 @@ export const Description = styled.p`
   font-size: 0.9rem;
   font-weight: 200;
   white-space: pre-wrap;
+`;
+
+export const SectionTitle = styled.h2`
+  font-weight: 400;
 `;
