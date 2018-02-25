@@ -32,6 +32,8 @@ function showNavigationWarning(e) {
   return confirmationMessage;
 }
 
+const formName = 'contact-form';
+
 export default class ContactForm extends Component {
   constructor(props) {
     super(props);
@@ -71,7 +73,7 @@ export default class ContactForm extends Component {
   handleSubmit(event) {
     this.disableWarningOnNavigation();
     axios
-      .post('/', encode({ 'form-name': 'contact', ...this.state }))
+      .post('/', encode({ 'form-name': formName, ...this.state }))
       .then(() => navigateTo('/thanks/'))
       .catch(err => global.console.error(err));
 
@@ -81,7 +83,7 @@ export default class ContactForm extends Component {
   render() {
     return (
       <form
-        name="contact-form"
+        name={formName}
         method="post"
         action="/thanks/"
         data-netlify="true"
