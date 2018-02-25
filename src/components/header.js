@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
+import scrollToElement from 'scroll-to-element';
 import logo from '../images/logo.png';
 
 const HeaderEl = styled.header`
@@ -31,9 +32,7 @@ const Nav = styled.nav`
     display: none;
   }
 `;
-const NavLink = styled(Link).attrs({
-  activeClassName: 'selected',
-})`
+const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0.3rem 0.8rem;
   color: #666;
@@ -44,6 +43,13 @@ const NavLink = styled(Link).attrs({
     box-shadow: 0 3px 0 0 ${props => props.theme.main};
   }
 `;
+
+const goToAnchor = idSelector => event => {
+  if (global.document.querySelector(idSelector)) {
+    event.preventDefault();
+    scrollToElement(idSelector, { offset: -50 });
+  }
+};
 
 const Header = () => (
   <HeaderEl>
@@ -57,12 +63,27 @@ const Header = () => (
     <Nav>
       <LinkList>
         <LinkListItem>
-          <NavLink to="/" exact>
+          <NavLink to="/" exact activeClassName="selected">
             <FormattedMessage id="home" />
           </NavLink>
         </LinkListItem>
         <LinkListItem>
-          <NavLink to="/contact">
+          <NavLink to="/#quality" onClick={goToAnchor('#quality')}>
+            <FormattedMessage id="qualityLink" />
+          </NavLink>
+        </LinkListItem>
+        <LinkListItem>
+          <NavLink to="/#business" onClick={goToAnchor('#business')}>
+            <FormattedMessage id="businessLink" />
+          </NavLink>
+        </LinkListItem>
+        <LinkListItem>
+          <NavLink to="/#about" onClick={goToAnchor('#about')}>
+            <FormattedMessage id="aboutLink" />
+          </NavLink>
+        </LinkListItem>
+        <LinkListItem>
+          <NavLink to="/contact" activeClassName="selected">
             <FormattedMessage id="contact" />
           </NavLink>
         </LinkListItem>

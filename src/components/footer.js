@@ -69,7 +69,7 @@ const Description = styled.p`
 `;
 
 const Footer = () => (
-  <FooterEl>
+  <FooterEl id="about">
     <Title>
       <FormattedMessage id="companyInfo" />
     </Title>

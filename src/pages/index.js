@@ -163,7 +163,7 @@ const IndexPage = () => (
         <Row style={{ alignItems: 'center' }}>
           <Column>
             <HrStub />
-            <ValueTitle>
+            <ValueTitle id="quality">
               <FormattedMessage id="top.valueTitle" />
             </ValueTitle>
             <Description>
@@ -187,7 +187,7 @@ const IndexPage = () => (
       ].map(ability => <AbilityCell key={ability.type} {...ability} />)}
     </AbilitiesContainer>
 
-    <LogisticsContainer>
+    <LogisticsContainer id="business">
       <Column>
         <LogisticsMiniTitle>
           <FormattedMessage id="top.logisticsMiniTitle" />
