@@ -45,6 +45,10 @@ export default class ContactForm extends Component {
     );
   }
 
+  componentWillUnmount() {
+    this.disableWarningOnNavigation();
+  }
+
   enableWarningOnNavigation() {
     if (!this.isWarningOnNavigation) {
       global.window.addEventListener('beforeunload', showNavigationWarning);
