@@ -49,7 +49,7 @@ const ServiceCell = ({ src, type, bgColor, iconMargin }) => (
     <IconColumn>
       <Icon src={src} alt="" margin={iconMargin} />
     </IconColumn>
-    <Column>
+    <Column style={{ flexBasis: '100%' }}>
       <Title>
         <FormattedMessage
           id="top.serviceForCustomer"
