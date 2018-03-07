@@ -25,7 +25,6 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
-    "develop": "gatsby develop",
     "format": "prettier --trailing-comma es5 --single-quote --write \"./*.js\" \"src/**/*.{js,css}\"",
     "lint": "eslint \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
