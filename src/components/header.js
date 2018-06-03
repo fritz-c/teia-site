@@ -133,6 +133,49 @@ const NavLink = styled(Link)`
   }
 `;
 
+const Dropdown = LinkListItem.extend`
+  position: relative;
+`;
+
+const DropdownContent = styled.div`
+  text-align: left;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  ${Dropdown}:hover > & {
+    display: block;
+  }
+
+  a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    position: static;
+    background: none;
+    box-shadow: none;
+    text-align: center;
+    font-size: 80%;
+    padding: 10px 0;
+
+    a {
+      padding: 6px;
+      color: #999;
+    }
+  }
+`;
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -181,14 +224,22 @@ class Header extends Component {
                 <FormattedMessage id="companyLink" />
               </NavLink>
             </LinkListItem>
-            <LinkListItem>
+            <Dropdown>
               <NavLink to="/business" activeClassName="selected">
                 <FormattedMessage id="businessLink" />
-                {/* businessLink.trade
-              businessLink.distribution
-              businessLink.oemOdm */}
               </NavLink>
-            </LinkListItem>
+              <DropdownContent>
+                <NavLink to="/business#trade">
+                  <FormattedMessage id="businessLink.trade" />
+                </NavLink>
+                <NavLink to="/business#distribution">
+                  <FormattedMessage id="businessLink.distribution" />
+                </NavLink>
+                <NavLink to="/business#oem-odm">
+                  <FormattedMessage id="businessLink.oemOdm" />
+                </NavLink>
+              </DropdownContent>
+            </Dropdown>
             <LinkListItem>
               <NavLink to="/partners" activeClassName="selected">
                 <FormattedMessage id="partnersLink" />

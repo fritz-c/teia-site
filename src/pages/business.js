@@ -134,7 +134,7 @@ const MicroTitle = styled.h4``;
 const BusinessPage = () => (
   <MyDiv>
     <GenericContainer>
-      <SectionTitle>
+      <SectionTitle id="trade">
         <FormattedMessage id="businessLink.trade" />
       </SectionTitle>
       <p>
@@ -168,7 +168,7 @@ const BusinessPage = () => (
       </LogisticsMiniTitle>
       <img src={tradeImage5} alt="" />
     </GenericContainer>
-    <SectionTitle>
+    <SectionTitle id="distribution">
       <FormattedMessage id="businessLink.distribution" />
     </SectionTitle>
     <ShadowContainer>
@@ -266,7 +266,7 @@ const BusinessPage = () => (
       </Column>
     </BusinessContainer>
 
-    <SectionTitle>
+    <SectionTitle id="oem-odm">
       <FormattedMessage id="businessLink.oemOdm" />
     </SectionTitle>
     <GenericContainer>
