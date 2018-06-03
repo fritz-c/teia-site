@@ -7,7 +7,6 @@ import ja from 'react-intl/locale-data/ja';
 import { localeData } from '../i18n';
 import { theme } from '../components/common';
 import Header from '../components/header';
-import Footer from '../components/footer';
 import teiaBadge from '../images/teia-badge.png';
 import './index.css';
 
@@ -55,7 +54,6 @@ const TemplateWrapper = ({ children }) => {
           </Helmet>
           <Header />
           <Page>{children()}</Page>
-          <Footer />
         </Fragment>
       </ThemeProvider>
     </IntlProvider>
