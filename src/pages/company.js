@@ -6,6 +6,7 @@ import { SectionTitle } from '../components/common';
 const Container = styled.div`
   max-width: 700px;
   margin: 80px auto;
+  padding: 0 40px;
 `;
 
 const MyTh = styled.th`
@@ -22,27 +23,29 @@ const CompanyPage = () => (
       <FormattedMessage id="companyLink" />
     </SectionTitle>
     <table>
-      {[
-        'companyInfo.name',
-        'companyInfo.created',
-        'companyInfo.representative',
-        'companyInfo.address1',
-        'companyInfo.address2',
-        'companyInfo.address3',
-        'companyInfo.banks',
-        'companyInfo.customers',
-        'companyInfo.capital',
-        'companyInfo.employeeCount',
-      ].map(type => (
-        <tr>
-          <MyTh>
-            <FormattedMessage id={`${type}Label`} />
-          </MyTh>
-          <MyTd>
-            <FormattedMessage id={type} />
-          </MyTd>
-        </tr>
-      ))}
+      <tbody>
+        {[
+          'companyInfo.name',
+          'companyInfo.created',
+          'companyInfo.representative',
+          'companyInfo.address1',
+          'companyInfo.address2',
+          'companyInfo.address3',
+          'companyInfo.banks',
+          'companyInfo.customers',
+          'companyInfo.capital',
+          'companyInfo.employeeCount',
+        ].map(type => (
+          <tr key={type}>
+            <MyTh>
+              <FormattedMessage id={`${type}Label`} />
+            </MyTh>
+            <MyTd>
+              <FormattedMessage id={type} />
+            </MyTd>
+          </tr>
+        ))}
+      </tbody>
     </table>
   </Container>
 );

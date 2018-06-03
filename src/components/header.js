@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
@@ -18,23 +18,100 @@ const HeaderEl = styled.header`
 const Logo = styled.img`
   margin: 0 0 0 2rem;
 `;
-const LinkList = styled.ul`
-  list-style: none;
-  margin: 0;
+
+const Nav = styled.nav`
+  flex: 2 1 auto;
+  text-align: right;
+  font-weight: 200;
+  align-self: center;
 `;
-const LinkListItem = styled.li`
-  display: inline-block;
+
+const LinkList = styled.ul`
   margin: 0;
 
   @media screen and (max-width: 768px) {
-    display: block;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 1;
+    background: white;
+    padding-top: 3rem;
+    transform: translateY(-100%) scaleY(0);
+    transition: transform 300ms;
+    text-align: center;
+    overflow: auto;
+    height: 100vh;
+    input:checked ~ & {
+      transform: translateY(0) scaleY(1);
+    }
   }
 `;
-const Nav = styled.nav`
+const LinkListItem = styled.li`
+  display: inline-block;
   @media screen and (max-width: 768px) {
-    // display: none;
+    display: block;
+    padding: 0.6rem;
+    font-size: 1.3rem;
   }
 `;
+const MenuStateWatcher = styled.input`
+  display: none;
+`;
+const MenuToggler = styled.label`
+  display: none;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  line-height: 0;
+  position: relative;
+  span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    display: inline-block;
+    background: black;
+    border-radius: 100px;
+    transition: opacity 300ms, transform 300ms, background-color 300ms;
+    &:first-child {
+      top: 5px;
+    }
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:last-child {
+      bottom: 5px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    z-index: 2;
+    display: inline-block;
+    input:checked ~ & {
+      position: fixed;
+      span {
+        background-color: #282828;
+        &:first-child {
+          transform: translateY(8px) rotateZ(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:last-child {
+          transform: translateY(-8px) rotateZ(-45deg);
+        }
+      }
+    }
+  }
+`;
+
 const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0.3rem 0.8rem;
@@ -44,7 +121,7 @@ const NavLink = styled(Link)`
 
   &.selected {
     color: ${props => props.theme.main};
-    box-shadow: 0 3px 0 0 ${props => props.theme.main};
+    box-shadow: 0 4px 0 -1px ${props => props.theme.main};
   }
 
   &:hover {
@@ -56,48 +133,86 @@ const NavLink = styled(Link)`
   }
 `;
 
-const Header = () => (
-  <HeaderEl>
-    <h1 style={{ margin: 0 }}>
-      <Link to="/">
-        <FormattedMessage id="teia">
-          {teiaName => <Logo alt={teiaName} src={logo} />}
-        </FormattedMessage>
-      </Link>
-    </h1>
-    <Nav>
-      <LinkList>
-        <LinkListItem>
-          <NavLink to="/" exact activeClassName="selected">
-            <FormattedMessage id="home" />
-          </NavLink>
-        </LinkListItem>
-        <LinkListItem>
-          <NavLink to="/company" activeClassName="selected">
-            <FormattedMessage id="companyLink" />
-          </NavLink>
-        </LinkListItem>
-        <LinkListItem>
-          <NavLink to="/business" activeClassName="selected">
-            <FormattedMessage id="businessLink" />
-            {/* businessLink.trade
-        businessLink.distribution
-        businessLink.oemOdm */}
-          </NavLink>
-        </LinkListItem>
-        <LinkListItem>
-          <NavLink to="/partners" activeClassName="selected">
-            <FormattedMessage id="partnersLink" />
-          </NavLink>
-        </LinkListItem>
-        <LinkListItem>
-          <NavLink to="/contact" activeClassName="selected">
-            <FormattedMessage id="contact" />
-          </NavLink>
-        </LinkListItem>
-      </LinkList>
-    </Nav>
-  </HeaderEl>
-);
+class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuOpen: false,
+    };
+  }
+
+  render() {
+    return (
+      <HeaderEl>
+        <h1 style={{ margin: 0 }}>
+          <Link to="/">
+            <FormattedMessage id="teia">
+              {teiaName => <Logo alt={teiaName} src={logo} />}
+            </FormattedMessage>
+          </Link>
+        </h1>
+
+        <Nav>
+          <MenuStateWatcher
+            id="menu-state-watcher"
+            type="checkbox"
+            checked={this.state.menuOpen}
+            onChange={event =>
+              this.setState({ menuOpen: event.target.checked })
+            }
+          />
+
+          <LinkList
+            onClick={event =>
+              event.target.parentNode &&
+              event.target.parentNode.href &&
+              this.state.menuOpen &&
+              this.setState({ menuOpen: false })
+            }
+          >
+            <LinkListItem>
+              <NavLink to="/" exact activeClassName="selected">
+                <FormattedMessage id="home" />
+              </NavLink>
+            </LinkListItem>
+            <LinkListItem>
+              <NavLink to="/company" activeClassName="selected">
+                <FormattedMessage id="companyLink" />
+              </NavLink>
+            </LinkListItem>
+            <LinkListItem>
+              <NavLink to="/business" activeClassName="selected">
+                <FormattedMessage id="businessLink" />
+                {/* businessLink.trade
+              businessLink.distribution
+              businessLink.oemOdm */}
+              </NavLink>
+            </LinkListItem>
+            <LinkListItem>
+              <NavLink to="/partners" activeClassName="selected">
+                <FormattedMessage id="partnersLink" />
+              </NavLink>
+            </LinkListItem>
+            <LinkListItem>
+              <NavLink to="/contact" activeClassName="selected">
+                <FormattedMessage id="contact" />
+              </NavLink>
+            </LinkListItem>
+          </LinkList>
+
+          <MenuToggler
+            htmlFor="menu-state-watcher"
+            onClick={e => e.stopPropagation()}
+          >
+            <span />
+            <span />
+            <span />
+          </MenuToggler>
+        </Nav>
+      </HeaderEl>
+    );
+  }
+}
 
 export default Header;
