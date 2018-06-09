@@ -17,7 +17,6 @@ import whiteAirplaneIcon from '../images/icon-airplane.png';
 import whiteShipIcon from '../images/icon-ship.png';
 import businesspeopleImage from '../images/businesspeople.png';
 import globeImage from '../images/globe.png';
-import tradeImage1 from '../images/trade1.png';
 import tradeImage2 from '../images/trade2.png';
 import tradeImage3 from '../images/trade3.png';
 import tradeImage4 from '../images/trade4.png';
@@ -143,10 +142,6 @@ const BusinessPage = () => (
       <p>
         <FormattedMessage id="trade.handledItems" />
       </p>
-      <LogisticsMiniTitle>
-        <FormattedMessage id="trade.item1" />
-      </LogisticsMiniTitle>
-      <img src={tradeImage1} alt="" />
 
       <LogisticsMiniTitle>
         <FormattedMessage id="trade.item2" />
