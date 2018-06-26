@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
-import logo from '../images/logo.png';
+import logo from '../images/logo.svg';
 
 const HeaderEl = styled.header`
   margin: 0 auto;
@@ -16,6 +16,7 @@ const HeaderEl = styled.header`
   }
 `;
 const Logo = styled.img`
+  width: 100px;
   margin: 0 0 0 2rem;
 `;
 
