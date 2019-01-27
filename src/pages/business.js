@@ -31,7 +31,7 @@ const MyP = styled.p`
   white-space: pre-wrap;
 `;
 
-const LogisticsContainer = Row.extend`
+const LogisticsContainer = styled(Row)`
   background: #fef9f6;
   background: linear-gradient(
     to left,
@@ -56,7 +56,7 @@ const LogisticsMiniTitle = styled.h3`
   margin-bottom: 0.7rem;
 `;
 
-const LogisticsTitle = SectionTitle.extend`
+const LogisticsTitle = styled(SectionTitle)`
   margin-bottom: 2rem;
 `;
 
@@ -86,7 +86,7 @@ const GlobeImage = styled.img.attrs({
   }
 `;
 
-const BusinessContainer = Row.extend`
+const BusinessContainer = styled(Row)`
   margin: 0 0 4rem 0;
   @media screen and (max-width: 768px) {
     margin: 25px 25px 4rem 25px;
@@ -104,7 +104,7 @@ const ShadowContainer = styled.div`
   }
 `;
 
-const ValueTitle = SectionTitle.extend``;
+const ValueTitle = styled(SectionTitle)``;
 
 const TeiaBadge = styled.img.attrs({
   alt: '',
@@ -115,7 +115,7 @@ const TeiaBadge = styled.img.attrs({
   margin: 0;
 `;
 
-const AbilitiesContainer = Row.extend`
+const AbilitiesContainer = styled(Row)`
   margin: 0 40px 2rem 40px;
 
   @media screen and (max-width: 768px) {

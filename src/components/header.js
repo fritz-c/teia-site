@@ -134,7 +134,7 @@ const NavLink = styled(Link)`
   }
 `;
 
-const Dropdown = LinkListItem.extend`
+const Dropdown = styled(LinkListItem)`
   position: relative;
 `;
 

@@ -18,12 +18,12 @@ const FooterEl = styled.footer`
   }
 `;
 
-const FooterRow = Row.extend`
+const FooterRow = styled(Row)`
   justify-content: space-between;
   align-items: flex-end;
 `;
 
-const FooterColumn = Column.extend`
+const FooterColumn = styled(Column)`
   margin-right: 30px;
 
   &:last-child {
@@ -40,7 +40,7 @@ const FooterColumn = Column.extend`
   }
 `;
 
-const ContactColumn = FooterColumn.extend`
+const ContactColumn = styled(FooterColumn)`
   text-align: right;
   align-self: flex-start;
 

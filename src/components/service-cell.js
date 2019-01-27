@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import { Row, Column, Description } from './common';
 
-const Container = Row.extend`
+const Container = styled(Row)`
   margin: 10px 0;
   background: ${props => props.bgColor};
   color: white;
@@ -16,7 +16,7 @@ const Container = Row.extend`
   }
 `;
 
-const IconColumn = Column.extend`
+const IconColumn = styled(Column)`
   flex: 1 0 136px;
   align-self: flex-end;
 

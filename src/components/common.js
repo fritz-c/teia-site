@@ -27,7 +27,7 @@ export const Button = styled.button`
   }
 `;
 
-export const ButtonLink = Button.withComponent(Link).extend`
+export const ButtonLink = styled(Button.withComponent(Link))`
   text-decoration: none;
   display: inline-block;
 `;

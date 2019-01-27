@@ -5,7 +5,7 @@ import { Row, Column, SectionTitle } from '../components/common';
 import ContactForm from '../components/contact-form';
 import teiaBadge from '../images/teia-badge.png';
 
-const Container = Row.extend`
+const Container = styled(Row)`
   max-width: 700px;
   margin: 2rem auto 4rem auto;
   padding: 25px;
