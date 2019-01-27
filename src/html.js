@@ -1,75 +1,56 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-let stylesStr;
-if (process.env.NODE_ENV === 'production') {
-  try {
-    // eslint-disable-next-line
-    stylesStr = require('!raw-loader!../public/styles.css');
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.log(e);
-  }
-}
+// This reason for using this custom html.js is apparently to
+// add typekit stuff.
 
-// eslint-disable-next-line react/prefer-stateless-function
-class HTML extends Component {
-  render() {
-    let css;
-    if (process.env.NODE_ENV === `production`) {
-      css = (
-        <style
-          id="gatsby-inlined-css"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: stylesStr }}
+function HTML({
+  body,
+  bodyAttributes,
+  headComponents,
+  htmlAttributes,
+  postBodyComponents,
+  preBodyComponents,
+}) {
+  return (
+    <html // eslint-disable-line jsx-a11y/html-has-lang
+      {...htmlAttributes}
+    >
+      <head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-      );
-    }
 
-    const {
-      body,
-      bodyAttributes,
-      headComponents,
-      htmlAttributes,
-      postBodyComponents,
-      preBodyComponents,
-    } = this.props;
+        {/* our custom stuff START */}
+        <script src="https://use.typekit.net/fni8ang.js" />
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: 'try{Typekit.load({ async: true });}catch(e){}',
+          }}
+        />
+        {/* our custom stuff END */}
 
-    return (
-      <html // eslint-disable-line jsx-a11y/html-has-lang
-        {...htmlAttributes}
-      >
-        <head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <script src="https://use.typekit.net/fni8ang.js" />
-          <script
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: 'try{Typekit.load({ async: true });}catch(e){}',
-            }}
-          />
-          {headComponents}
-          {css}
-          <script />
-        </head>
-        <body {...bodyAttributes}>
-          {preBodyComponents}
-          <div
-            key="body"
-            id="___gatsby"
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: body }}
-          />
-          {postBodyComponents}
-        </body>
-      </html>
-    );
-  }
+        {headComponents}
+      </head>
+      <body {...bodyAttributes}>
+        {preBodyComponents}
+        <noscript key="noscript" id="gatsby-noscript">
+          This app works best with JavaScript enabled.
+        </noscript>
+        <div
+          key="body"
+          id="___gatsby"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: body }}
+        />
+        {postBodyComponents}
+      </body>
+    </html>
+  );
 }
 
 HTML.defaultProps = {
