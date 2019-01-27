@@ -25,9 +25,19 @@ class HTML extends Component {
         />
       );
     }
+
+    const {
+      body,
+      bodyAttributes,
+      headComponents,
+      htmlAttributes,
+      postBodyComponents,
+      preBodyComponents,
+    } = this.props;
+
     return (
       <html // eslint-disable-line jsx-a11y/html-has-lang
-        {...this.props.htmlAttributes}
+        {...htmlAttributes}
       >
         <head>
           <meta charSet="utf-8" />
@@ -43,19 +53,19 @@ class HTML extends Component {
               __html: 'try{Typekit.load({ async: true });}catch(e){}',
             }}
           />
-          {this.props.headComponents}
+          {headComponents}
           {css}
           <script />
         </head>
-        <body {...this.props.bodyAttributes}>
-          {this.props.preBodyComponents}
+        <body {...bodyAttributes}>
+          {preBodyComponents}
           <div
             key="body"
             id="___gatsby"
             // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: this.props.body }}
+            dangerouslySetInnerHTML={{ __html: body }}
           />
-          {this.props.postBodyComponents}
+          {postBodyComponents}
         </body>
       </html>
     );

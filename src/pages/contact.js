@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import { Row, Column, SectionTitle } from '../components/common';
 import ContactForm from '../components/contact-form';
+import Layout from '../components/layout';
 import teiaBadge from '../images/teia-badge.png';
 
 const Container = styled(Row)`
@@ -38,17 +39,19 @@ const TeiaBadge = styled.img.attrs({
 `;
 
 const SecondPage = () => (
-  <Container>
-    <Column style={{ width: '100%' }}>
-      <SectionTitle>
-        <FormattedMessage id="contact" />
-      </SectionTitle>
-      <ContactForm />
-    </Column>
-    <Column style={{ flexGrow: 0 }}>
-      <TeiaBadge />
-    </Column>
-  </Container>
+  <Layout>
+    <Container>
+      <Column style={{ width: '100%' }}>
+        <SectionTitle>
+          <FormattedMessage id="contact" />
+        </SectionTitle>
+        <ContactForm />
+      </Column>
+      <Column style={{ flexGrow: 0 }}>
+        <TeiaBadge />
+      </Column>
+    </Container>
+  </Layout>
 );
 
 export default SecondPage;

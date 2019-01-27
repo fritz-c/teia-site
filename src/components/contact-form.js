@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { navigateTo } from 'gatsby-link';
+import { navigate } from 'gatsby-link';
 import axios from 'axios';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
@@ -74,13 +74,14 @@ export default class ContactForm extends Component {
     this.disableWarningOnNavigation();
     axios
       .post('/', encode({ 'form-name': formName, ...this.state }))
-      .then(() => navigateTo('/thanks/'))
+      .then(() => navigate('/thanks/'))
       .catch(err => global.console.error(err));
 
     event.preventDefault();
   }
 
   render() {
+    /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
     return (
       <form
         name={formName}
@@ -165,5 +166,6 @@ export default class ContactForm extends Component {
         </p>
       </form>
     );
+    /* eslint-enable */
   }
 }

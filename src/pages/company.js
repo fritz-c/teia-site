@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
+import Layout from '../components/layout';
 import { SectionTitle } from '../components/common';
 
 const Container = styled.div`
@@ -18,36 +19,38 @@ const MyTd = styled.td`
 `;
 
 const CompanyPage = () => (
-  <Container>
-    <SectionTitle>
-      <FormattedMessage id="companyLink" />
-    </SectionTitle>
-    <table>
-      <tbody>
-        {[
-          'companyInfo.name',
-          'companyInfo.created',
-          'companyInfo.representative',
-          'companyInfo.address1',
-          'companyInfo.address2',
-          'companyInfo.address3',
-          'companyInfo.banks',
-          'companyInfo.customers',
-          'companyInfo.capital',
-          'companyInfo.employeeCount',
-        ].map(type => (
-          <tr key={type}>
-            <MyTh>
-              <FormattedMessage id={`${type}Label`} />
-            </MyTh>
-            <MyTd>
-              <FormattedMessage id={type} />
-            </MyTd>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </Container>
+  <Layout>
+    <Container>
+      <SectionTitle>
+        <FormattedMessage id="companyLink" />
+      </SectionTitle>
+      <table>
+        <tbody>
+          {[
+            'companyInfo.name',
+            'companyInfo.created',
+            'companyInfo.representative',
+            'companyInfo.address1',
+            'companyInfo.address2',
+            'companyInfo.address3',
+            'companyInfo.banks',
+            'companyInfo.customers',
+            'companyInfo.capital',
+            'companyInfo.employeeCount',
+          ].map(type => (
+            <tr key={type}>
+              <MyTh>
+                <FormattedMessage id={`${type}Label`} />
+              </MyTh>
+              <MyTd>
+                <FormattedMessage id={type} />
+              </MyTd>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Container>
+  </Layout>
 );
 
 export default CompanyPage;

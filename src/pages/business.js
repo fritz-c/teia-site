@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
+import Layout from '../components/layout';
 import { Row, Column, Description, SectionTitle } from '../components/common';
 import ServiceCell from '../components/service-cell';
 import AbilityCell from '../components/ability-cell';
@@ -131,205 +132,211 @@ const GenericContainer = styled.div`
 const MicroTitle = styled.h4``;
 
 const BusinessPage = () => (
-  <MyDiv>
-    <GenericContainer>
-      <SectionTitle id="trade">
-        <FormattedMessage id="businessLink.trade" />
+  <Layout>
+    <MyDiv>
+      <GenericContainer>
+        <SectionTitle id="trade">
+          <FormattedMessage id="businessLink.trade" />
+        </SectionTitle>
+        <p>
+          <FormattedMessage id="trade.intro" />
+        </p>
+        <p>
+          <FormattedMessage id="trade.handledItems" />
+        </p>
+
+        <LogisticsMiniTitle>
+          <FormattedMessage id="trade.item2" />
+        </LogisticsMiniTitle>
+        <img src={tradeImage2} alt="" />
+
+        <LogisticsMiniTitle>
+          <FormattedMessage id="trade.item3" />
+        </LogisticsMiniTitle>
+        <img src={tradeImage3} alt="" />
+
+        <LogisticsMiniTitle>
+          <FormattedMessage id="trade.item4" />
+        </LogisticsMiniTitle>
+        <img src={tradeImage4} alt="" />
+
+        <LogisticsMiniTitle>
+          <FormattedMessage id="trade.item5" />
+        </LogisticsMiniTitle>
+        <img src={tradeImage5} alt="" />
+      </GenericContainer>
+      <SectionTitle id="distribution">
+        <FormattedMessage id="businessLink.distribution" />
       </SectionTitle>
-      <p>
-        <FormattedMessage id="trade.intro" />
-      </p>
-      <p>
-        <FormattedMessage id="trade.handledItems" />
-      </p>
+      <ShadowContainer>
+        <Row style={{ alignItems: 'center' }}>
+          <Column>
+            <ValueTitle id="quality">
+              <FormattedMessage id="top.valueTitle" />
+            </ValueTitle>
+            <Description>
+              <FormattedMessage id="top.valueDescription" />
+            </Description>
+          </Column>
+          <Column>
+            <TeiaBadge />
+          </Column>
+        </Row>
+      </ShadowContainer>
 
-      <LogisticsMiniTitle>
-        <FormattedMessage id="trade.item2" />
-      </LogisticsMiniTitle>
-      <img src={tradeImage2} alt="" />
+      <AbilitiesContainer>
+        {[
+          { type: 'Confer', src: handshakeIcon },
+          { type: 'Packing', src: packagesIcon },
+          { type: 'Clearance', src: contractIcon },
+          { type: 'AirFreight', src: airplaneIcon },
+          { type: 'SeaFreight', src: shipIcon },
+        ].map(ability => (
+          <AbilityCell key={ability.type} {...ability} />
+        ))}
+      </AbilitiesContainer>
 
-      <LogisticsMiniTitle>
-        <FormattedMessage id="trade.item3" />
-      </LogisticsMiniTitle>
-      <img src={tradeImage3} alt="" />
-
-      <LogisticsMiniTitle>
-        <FormattedMessage id="trade.item4" />
-      </LogisticsMiniTitle>
-      <img src={tradeImage4} alt="" />
-
-      <LogisticsMiniTitle>
-        <FormattedMessage id="trade.item5" />
-      </LogisticsMiniTitle>
-      <img src={tradeImage5} alt="" />
-    </GenericContainer>
-    <SectionTitle id="distribution">
-      <FormattedMessage id="businessLink.distribution" />
-    </SectionTitle>
-    <ShadowContainer>
-      <Row style={{ alignItems: 'center' }}>
+      <LogisticsContainer id="distribution">
         <Column>
-          <ValueTitle id="quality">
-            <FormattedMessage id="top.valueTitle" />
-          </ValueTitle>
+          <LogisticsMiniTitle>
+            <FormattedMessage id="top.logisticsMiniTitle" />
+          </LogisticsMiniTitle>
+          <LogisticsTitle>
+            <FormattedMessage id="top.logisticsTitle" />
+          </LogisticsTitle>
           <Description>
-            <FormattedMessage id="top.valueDescription" />
+            <FormattedMessage id="top.logisticsDescription1" />
+          </Description>
+          <Description>
+            <FormattedMessage id="top.logisticsDescription2" />
           </Description>
         </Column>
-        <Column>
-          <TeiaBadge />
+        <Column style={{ alignSelf: 'center' }}>
+          <BusinesspeopleImage />
         </Column>
-      </Row>
-    </ShadowContainer>
+      </LogisticsContainer>
 
-    <AbilitiesContainer>
-      {[
-        { type: 'Confer', src: handshakeIcon },
-        { type: 'Packing', src: packagesIcon },
-        { type: 'Clearance', src: contractIcon },
-        { type: 'AirFreight', src: airplaneIcon },
-        { type: 'SeaFreight', src: shipIcon },
-      ].map(ability => <AbilityCell key={ability.type} {...ability} />)}
-    </AbilitiesContainer>
+      <BusinessContainer>
+        <Column>
+          <GlobeImage />
+        </Column>
+        <Column>
+          <MicroTitle>
+            <FormattedMessage id="top.businessTitle" />
+          </MicroTitle>
+          <Description>
+            <FormattedMessage id="top.businessDescription" />
+          </Description>
+          <MicroTitle>
+            <FormattedMessage id="top.servicesTitle" />
+          </MicroTitle>
+          {[
+            {
+              type: 'Confer',
+              src: whiteConversationIcon,
+              bgColor: '#2381BE',
+              iconMargin: '0 36px 0 10px',
+            },
+            {
+              type: 'Packing',
+              src: whitePackageIcon,
+              bgColor: '#146843',
+              iconMargin: '0 36px 5px 0',
+            },
+            {
+              type: 'Clearance',
+              src: whiteClipboardIcon,
+              bgColor: '#B23178',
+              iconMargin: '0 36px 8px 22px',
+            },
+            {
+              type: 'AirFreight',
+              src: whiteAirplaneIcon,
+              bgColor: '#5F99C2',
+              iconMargin: '0 36px 15px 0',
+            },
+            {
+              type: 'SeaFreight',
+              src: whiteShipIcon,
+              bgColor: '#6CA84A',
+              iconMargin: '0 36px 20px 0',
+            },
+          ].map(service => (
+            <ServiceCell key={service.type} {...service} />
+          ))}
+        </Column>
+      </BusinessContainer>
 
-    <LogisticsContainer id="distribution">
-      <Column>
+      <SectionTitle id="oem-odm">
+        <FormattedMessage id="businessLink.oemOdm" />
+      </SectionTitle>
+      <GenericContainer>
+        <FormattedMessage id="oemOdm.flow" />
         <LogisticsMiniTitle>
-          <FormattedMessage id="top.logisticsMiniTitle" />
+          <FormattedMessage id="oemOdm.step1.title" />
         </LogisticsMiniTitle>
-        <LogisticsTitle>
-          <FormattedMessage id="top.logisticsTitle" />
-        </LogisticsTitle>
-        <Description>
-          <FormattedMessage id="top.logisticsDescription1" />
-        </Description>
-        <Description>
-          <FormattedMessage id="top.logisticsDescription2" />
-        </Description>
-      </Column>
-      <Column style={{ alignSelf: 'center' }}>
-        <BusinesspeopleImage />
-      </Column>
-    </LogisticsContainer>
+        <MyP>
+          <FormattedMessage id="oemOdm.step1.description" />
+        </MyP>
+        <LogisticsMiniTitle>
+          <FormattedMessage id="oemOdm.step2.title" />
+        </LogisticsMiniTitle>
+        <MyP>
+          <FormattedMessage id="oemOdm.step2.description" />
+        </MyP>
+        <LogisticsMiniTitle>
+          <FormattedMessage id="oemOdm.step3.title" />
+        </LogisticsMiniTitle>
+        <MyP>
+          <FormattedMessage id="oemOdm.step3.description" />
+        </MyP>
+        <LogisticsMiniTitle>
+          <FormattedMessage id="oemOdm.step4.title" />
+        </LogisticsMiniTitle>
+        <MyP>
+          <FormattedMessage id="oemOdm.step4.description" />
+        </MyP>
+        <LogisticsMiniTitle>
+          <FormattedMessage id="oemOdm.step5.title" />
+        </LogisticsMiniTitle>
+        <MyP>
+          <FormattedMessage id="oemOdm.step5.description" />
+        </MyP>
+        <LogisticsMiniTitle>
+          <FormattedMessage id="oemOdm.step6.title" />
+        </LogisticsMiniTitle>
+        <MyP>
+          <FormattedMessage id="oemOdm.step6.description" />
+        </MyP>
 
-    <BusinessContainer>
-      <Column>
-        <GlobeImage />
-      </Column>
-      <Column>
         <MicroTitle>
-          <FormattedMessage id="top.businessTitle" />
+          <FormattedMessage id="oemOdm.order" />
         </MicroTitle>
-        <Description>
-          <FormattedMessage id="top.businessDescription" />
-        </Description>
+        <LogisticsMiniTitle>
+          <FormattedMessage id="oemOdm.step7.title" />
+        </LogisticsMiniTitle>
+        <MyP>
+          <FormattedMessage id="oemOdm.step7.description" />
+        </MyP>
+        <LogisticsMiniTitle>
+          <FormattedMessage id="oemOdm.step8.title" />
+        </LogisticsMiniTitle>
+        <MyP>
+          <FormattedMessage id="oemOdm.step8.description" />
+        </MyP>
+
         <MicroTitle>
-          <FormattedMessage id="top.servicesTitle" />
+          <FormattedMessage id="oemOdm.delivery" />
         </MicroTitle>
-        {[
-          {
-            type: 'Confer',
-            src: whiteConversationIcon,
-            bgColor: '#2381BE',
-            iconMargin: '0 36px 0 10px',
-          },
-          {
-            type: 'Packing',
-            src: whitePackageIcon,
-            bgColor: '#146843',
-            iconMargin: '0 36px 5px 0',
-          },
-          {
-            type: 'Clearance',
-            src: whiteClipboardIcon,
-            bgColor: '#B23178',
-            iconMargin: '0 36px 8px 22px',
-          },
-          {
-            type: 'AirFreight',
-            src: whiteAirplaneIcon,
-            bgColor: '#5F99C2',
-            iconMargin: '0 36px 15px 0',
-          },
-          {
-            type: 'SeaFreight',
-            src: whiteShipIcon,
-            bgColor: '#6CA84A',
-            iconMargin: '0 36px 20px 0',
-          },
-        ].map(service => <ServiceCell key={service.type} {...service} />)}
-      </Column>
-    </BusinessContainer>
-
-    <SectionTitle id="oem-odm">
-      <FormattedMessage id="businessLink.oemOdm" />
-    </SectionTitle>
-    <GenericContainer>
-      <FormattedMessage id="oemOdm.flow" />
-      <LogisticsMiniTitle>
-        <FormattedMessage id="oemOdm.step1.title" />
-      </LogisticsMiniTitle>
-      <MyP>
-        <FormattedMessage id="oemOdm.step1.description" />
-      </MyP>
-      <LogisticsMiniTitle>
-        <FormattedMessage id="oemOdm.step2.title" />
-      </LogisticsMiniTitle>
-      <MyP>
-        <FormattedMessage id="oemOdm.step2.description" />
-      </MyP>
-      <LogisticsMiniTitle>
-        <FormattedMessage id="oemOdm.step3.title" />
-      </LogisticsMiniTitle>
-      <MyP>
-        <FormattedMessage id="oemOdm.step3.description" />
-      </MyP>
-      <LogisticsMiniTitle>
-        <FormattedMessage id="oemOdm.step4.title" />
-      </LogisticsMiniTitle>
-      <MyP>
-        <FormattedMessage id="oemOdm.step4.description" />
-      </MyP>
-      <LogisticsMiniTitle>
-        <FormattedMessage id="oemOdm.step5.title" />
-      </LogisticsMiniTitle>
-      <MyP>
-        <FormattedMessage id="oemOdm.step5.description" />
-      </MyP>
-      <LogisticsMiniTitle>
-        <FormattedMessage id="oemOdm.step6.title" />
-      </LogisticsMiniTitle>
-      <MyP>
-        <FormattedMessage id="oemOdm.step6.description" />
-      </MyP>
-
-      <MicroTitle>
-        <FormattedMessage id="oemOdm.order" />
-      </MicroTitle>
-      <LogisticsMiniTitle>
-        <FormattedMessage id="oemOdm.step7.title" />
-      </LogisticsMiniTitle>
-      <MyP>
-        <FormattedMessage id="oemOdm.step7.description" />
-      </MyP>
-      <LogisticsMiniTitle>
-        <FormattedMessage id="oemOdm.step8.title" />
-      </LogisticsMiniTitle>
-      <MyP>
-        <FormattedMessage id="oemOdm.step8.description" />
-      </MyP>
-
-      <MicroTitle>
-        <FormattedMessage id="oemOdm.delivery" />
-      </MicroTitle>
-      <LogisticsMiniTitle>
-        <FormattedMessage id="oemOdm.step9.title" />
-      </LogisticsMiniTitle>
-      <MyP>
-        <FormattedMessage id="oemOdm.step9.description" />
-      </MyP>
-    </GenericContainer>
-  </MyDiv>
+        <LogisticsMiniTitle>
+          <FormattedMessage id="oemOdm.step9.title" />
+        </LogisticsMiniTitle>
+        <MyP>
+          <FormattedMessage id="oemOdm.step9.description" />
+        </MyP>
+      </GenericContainer>
+    </MyDiv>
+  </Layout>
 );
 
 export default BusinessPage;

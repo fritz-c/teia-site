@@ -187,6 +187,7 @@ class Header extends Component {
   }
 
   render() {
+    const { menuOpen } = this.state;
     return (
       <HeaderEl>
         <h1 style={{ margin: 0 }}>
@@ -201,7 +202,7 @@ class Header extends Component {
           <MenuStateWatcher
             id="menu-state-watcher"
             type="checkbox"
-            checked={this.state.menuOpen}
+            checked={menuOpen}
             onChange={event =>
               this.setState({ menuOpen: event.target.checked })
             }
@@ -211,12 +212,12 @@ class Header extends Component {
             onClick={event =>
               event.target.parentNode &&
               event.target.parentNode.href &&
-              this.state.menuOpen &&
+              menuOpen &&
               this.setState({ menuOpen: false })
             }
           >
             <LinkListItem>
-              <NavLink to="/" exact activeClassName="selected">
+              <NavLink to="/" activeClassName="selected">
                 <FormattedMessage id="home" />
               </NavLink>
             </LinkListItem>

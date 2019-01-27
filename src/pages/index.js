@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
-import { ButtonLink } from '../components/common';
+import Layout from '../components/layout';
 import heroImage from '../images/hero.jpg';
 
 const HeroContainer = styled.div`
@@ -29,16 +29,18 @@ const HeroDescription = styled.h3`
 `;
 
 const IndexPage = () => (
-  <div>
-    <HeroContainer>
-      <HeroTitle>
-        <FormattedMessage id="top.heroTitle" />
-      </HeroTitle>
-      <HeroDescription>
-        <FormattedMessage id="top.heroDescription" />
-      </HeroDescription>
-    </HeroContainer>
-  </div>
+  <Layout>
+    <div>
+      <HeroContainer>
+        <HeroTitle>
+          <FormattedMessage id="top.heroTitle" />
+        </HeroTitle>
+        <HeroDescription>
+          <FormattedMessage id="top.heroDescription" />
+        </HeroDescription>
+      </HeroContainer>
+    </div>
+  </Layout>
 );
 
 export default IndexPage;
