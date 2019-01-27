@@ -87,16 +87,16 @@ export default class ContactForm extends Component {
         method="post"
         action="/thanks/"
         data-netlify="true"
-        data-netlify-honeypot="bot-field"
+        data-netlify-honeypot="dontfillme"
         onSubmit={this.handleSubmit}
       >
         <p hidden>
-          <label htmlFor="bot-field">
+          <label htmlFor="dontfillme">
             <FormattedMessage id="contact.doNotFill" />
             <FullWidthInput
               type="text"
-              id="bot-field"
-              name="bot-field"
+              id="dontfillme"
+              name="dontfillme"
               onChange={this.handleChange}
             />
           </label>
@@ -157,6 +157,7 @@ export default class ContactForm extends Component {
             />
           </label>
         </p>
+        <div data-netlify-recaptcha="true" />
         <p>
           <Button type="submit">
             <FormattedMessage id="contact.send" />
